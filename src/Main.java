@@ -11,6 +11,7 @@ public class Main {
             System.out.println("\t 1. Добавить предмет покупки");
             System.out.println("\t 2. Показать список покупок");
             System.out.println("\t 3. Удалить предмет покупки");
+            System.out.println("\t 4. Найти предмет покупки");
             scanner = sc.nextLine();
             if (scanner.equalsIgnoreCase("end")) {
                 break;
@@ -42,9 +43,26 @@ public class Main {
                                     System.out.println("Такой элемент не найден!");
                                 }
                             }
-
                         }
                         show(list);
+                        break;
+                    }
+                    case ("4"): {
+                        System.out.println("Какой пункт покупок хотите найти? Введите номер или название");
+                        scanner = sc.nextLine();
+                        try {
+                            System.out.println("Пункт покупки найден! \n" + scanner + ". " + list.get(Integer.parseInt(scanner) - 1));
+                        } catch (NumberFormatException e) {
+                            String lowerCase;
+                            String scanLow = scanner.toLowerCase();
+                            for (int i = 0; i < list.size(); i++) {
+                                lowerCase = list.get(i).toLowerCase();
+                                if (lowerCase.contains(scanLow)) {
+                                    System.out.println((list.indexOf(list.get(i)) + 1) + ". " + list.get(i));
+                                }
+                            }
+                        }
+
                         break;
                     }
 
